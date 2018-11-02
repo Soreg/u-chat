@@ -1,8 +1,26 @@
-import React, { Component } from 'react';
-import * as firebase from 'firebase';
+import React from 'react'
+import styled from 'styled-components'
+import SingleMessage from './SingleMessage'
 
-class ChatRoom extends Component {
+const MessageUl = styled.ul`
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+`
 
+
+const MessageList = (props) => {
+    return (
+        <MessageUl>
+            {
+                props.messages.map((message) => (
+                    <SingleMessage message={message} />
+                ))
+            }
+        </MessageUl>
+    )
 }
 
-export default ChatRoom;
+export default MessageList;

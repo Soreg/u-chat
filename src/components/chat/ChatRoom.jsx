@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
 import * as firebase from 'firebase'
 import TextEditor from './TextEditor'
+import MessageList from './MessageList'
 import styled from 'styled-components'
 
 const ChatWrapper = styled.div`
     width: 500px;
     margin: 0 auto;
+    padding: 12px;
+    border: 2px solid black;
+    margin-top: 35px;
 `
 
 class ChatRoom extends Component {
@@ -58,13 +62,7 @@ class ChatRoom extends Component {
     render() {
         return (
             <ChatWrapper>
-                <ol>
-                    {
-                        this.state.messages.map((message) => (
-                            <li key={message.id}>{message.text}</li>
-                        ))
-                    }
-                </ol>
+                <MessageList messages={this.state.messages} />
                 <TextEditor 
                     message={this.state.message} 
                     handleInputChange={(e) => this.handleInputChange(e)} 

@@ -26,6 +26,14 @@ const Button = styled.button`
     display: block;
     margin: 20px auto 0;
     width: 100%;
+    background: #00802b;
+    color: white;
+    transition: all ease .3s;
+    border: 2px solid transparent;
+
+    &:hover {
+        background: #009933;
+    }
 `
 
 const TextEditor = (props) => {
