@@ -1,5 +1,12 @@
-import React, { Component } from 'react';
-import * as firebase from 'firebase';
+import React, { Component } from 'react'
+import * as firebase from 'firebase'
+import TextEditor from './TextEditor'
+import styled from 'styled-components'
+
+const ChatWrapper = styled.div`
+    width: 500px;
+    margin: 0 auto;
+`
 
 class ChatRoom extends Component {
     constructor(props, context) {
@@ -42,12 +49,15 @@ class ChatRoom extends Component {
                 text: this.state.message
             }
             firebase.database().ref('messages/'+message.id).set(message);
+            this.setState({
+                message: ''
+            })
         }
     }
 
     render() {
         return (
-            <div>
+            <ChatWrapper>
                 <ol>
                     {
                         this.state.messages.map((message) => (
@@ -55,10 +65,13 @@ class ChatRoom extends Component {
                         ))
                     }
                 </ol>
-                <input type="text" placeholder="Type your message ..." value={this.state.message} onChange={(e) => this.handleInputChange(e)} onKeyPress={(e) => this.handleKeypress(e)} />
-                <br /><br />
-                <button onClick={this.SendMessage}>Submit</button>
-            </div>
+                <TextEditor 
+                    message={this.state.message} 
+                    handleInputChange={(e) => this.handleInputChange(e)} 
+                    handleKeypress={(e) => this.handleKeypress(e)}
+                    SendMessage={this.SendMessage}
+                    />
+            </ChatWrapper>
         )
     }
 }
