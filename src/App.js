@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ChatRoom from './components/ChatRoom';
+import ChatRoom from './components/chat/ChatRoom';
 import * as firebase from 'firebase';
 
 var config = {
