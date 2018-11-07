@@ -17,8 +17,8 @@ const MessageList = (props) => {
     return (
         <MessageUl>
             {
-                props.messages.map((message) => (
-                    <SingleMessage message={message} />
+                props.messages.map((message, i) => (
+                    <SingleMessage key={i} message={message} />
                 ))
             }
         </MessageUl>
